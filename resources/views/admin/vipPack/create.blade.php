@@ -23,7 +23,7 @@
                             {!! implode('', $errors->all('<div class="alert alert-danger">:message</div>')) !!}
                         @endif
                     </div>
-                    <form action="{{ route('vippack.store') }}" method="POST" class="my-5"
+                    <form action="{{ url('admin/vippack') }}" method="POST" class="my-5"
                         enctype="multipart/form-data">
                         @csrf
                         <div class="d-flex row ">

@@ -112,10 +112,10 @@
                         </a>
                         <ul class="nav-sub">
                             <li class="nav-sub-item">
-                                <a class="nav-sub-link" href="{{ route('vippack.create') }}">ایجاد</a>
+                                <a class="nav-sub-link" href="{{ url('admin/vippack/create') }}">ایجاد</a>
                             </li>
                             <li class="nav-sub-item">
-                                <a class="nav-sub-link" href="{{ route('vippack.index') }}">لیست</a>
+                                <a class="nav-sub-link" href="{{ url('admin/vippack') }}">لیست</a>
                             </li>
                         </ul>
                     </li>
