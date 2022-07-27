@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\AdminNotificationController;
 use App\Http\Controllers\admin\AdminSerialController;
 use App\Http\Controllers\admin\AdminUserController;
 use App\Http\Controllers\admin\AdminVIPPackController;
+use App\Http\Controllers\front\MainController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\front\VipPackController;
 
@@ -19,11 +20,14 @@ use App\Http\Controllers\front\VipPackController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.layouts.master');
-});
+
+
+Route::resource('/', MainController::class);
 
 Route::prefix('admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.layouts.master');
+    });
     Route::resource('imdb', AdminImdbController::class);
     Route::resource('user', AdminUserController::class);
     Route::resource('serial', AdminSerialController::class);
