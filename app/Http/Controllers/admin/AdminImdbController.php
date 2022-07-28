@@ -61,6 +61,7 @@ class AdminImdbController extends Controller
         $model->lang = $request->languages;
         $model->country = $request->countries;
         $model->stars = $request->stars;
+        $model->imDbRating = $request->imDbRating;
         $model->save();
         //in here we should create another model
 
@@ -192,6 +193,7 @@ class AdminImdbController extends Controller
         $model->country = $result['countries'];
         $model->stars = $result['stars'];
         $model->director = $result['directors'];
+        $model->imDbRating = $result['imDbRating'];
         $model->save();
 
         \Illuminate\Support\Facades\Session::flash('record-save', " رکورد شما ذخیره شد،در صورت تمایل میتوانید اطلاعات دریافتی را اینجا ویرایش کنید");

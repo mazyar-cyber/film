@@ -4,6 +4,8 @@ namespace App\Http\Controllers\front;
 
 use App\Http\Controllers\Controller;
 use App\Models\imdb;
+use App\Models\News;
+use App\Models\Serial;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -16,7 +18,8 @@ class MainController extends Controller
     public function index()
     {
         $films = imdb::all();
-        return view('FrontEnd.layouts.master', compact('films'));
+        $news = News::all();
+        return view('FrontEnd.main.index', compact('films', 'news'));
     }
 
     /**
@@ -83,5 +86,13 @@ class MainController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function search(Request $request)
+    {
+        // return $request->all();
+        $model1 = imdb::where('title', 'LIKE', "%$request->searchWord%")->get();
+        $model2 = Serial::where('title', 'LIKE', "%$request->searchWord%")->get();
+        return ['films' => $model1, 'serials' => $model2];
     }
 }

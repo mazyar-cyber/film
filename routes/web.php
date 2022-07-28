@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AdminImdbController;
+use App\Http\Controllers\admin\AdminNewsController;
 use App\Http\Controllers\admin\AdminNotificationController;
 use App\Http\Controllers\admin\AdminSerialController;
 use App\Http\Controllers\admin\AdminUserController;
@@ -23,7 +24,7 @@ use App\Http\Controllers\front\VipPackController;
 
 
 Route::resource('/', MainController::class);
-
+Route::post('/search', [MainController::class, 'search'])->name('search');
 Route::prefix('admin')->group(function () {
     Route::get('/', function () {
         return view('admin.layouts.master');
@@ -32,12 +33,14 @@ Route::prefix('admin')->group(function () {
     Route::resource('user', AdminUserController::class);
     Route::resource('serial', AdminSerialController::class);
     Route::resource('vippack', AdminVIPPackController::class);
+    Route::resource('news', AdminNewsController::class);
     Route::resource('notification', AdminNotificationController::class);
     Route::delete('deleteSelectedIMDbRecord', [AdminImdbController::class, 'deleteSelected'])->name('imdb.selectedDel');
     Route::delete('deleteSelectedSerialRecord', [AdminSerialController::class, 'deleteSelected'])->name('serial.selectedDel');
     Route::delete('deleteSelectedUserRecord', [AdminUserController::class, 'deleteSelected'])->name('user.selectedDel');
     Route::delete('deleteSelectedVIPPackRecord', [AdminVIPPackController::class, 'deleteSelected'])->name('vippack.selectedDel');
     Route::delete('deleteSelectedNotoficationRecord', [AdminNotificationController::class, 'deleteSelected'])->name('notofication.selectedDel');
+    Route::delete('deleteSelectedNewsRecord', [AdminNewsController::class, 'deleteSelected'])->name('news.selectedDel');
     Route::post('sendApiToIMDB', [AdminImdbController::class, 'sendApi'])->name('send.api.imdb');
     Route::post('sendApiToImdbForSerial', [AdminSerialController::class, 'sendApi'])->name('send.api.serial');
 });
