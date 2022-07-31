@@ -55,6 +55,10 @@
                                         <th class="wd-lg-20p"><span>عکس</span></th>
                                         <th class="wd-lg-20p"><span>عکس اسلایدر</span></th>
                                         <th class="wd-lg-20p"><span>خلاصه</span></th>
+                                        <th class="wd-lg-20p"><span>ستارگان</span></th>
+                                        <th class="wd-lg-20p"><span>ژانرها</span></th>
+                                        <th class="wd-lg-20p"><span>کشورها</span></th>
+                                        <th class="wd-lg-20p"><span>کارگردان</span></th>
                                         <th class="wd-lg-20p">توضیحات</th>
                                         <th class="wd-lg-20p">به زودی</th>
                                         <th class="wd-lg-20p">دوبله</th>
@@ -82,6 +86,18 @@
                                             </td>
                                             <td class="text-start">
                                                 <textarea>{{ $d->briefStory }}</textarea>
+                                            </td>
+                                            <td>
+                                                {{ $d->stars }}
+                                            </td>
+                                            <td>
+                                                {{ $d->genre }}
+                                            </td>
+                                            <td>
+                                                {{ $d->country }}
+                                            </td>
+                                            <td>
+                                                {{ $d->director }}
                                             </td>
                                             <td>
                                                 <textarea style="width: 300px" readonly>{{ $d->description }}</textarea>

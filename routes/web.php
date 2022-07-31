@@ -25,10 +25,11 @@ use App\Http\Controllers\front\VipPackController;
 
 Route::resource('/', MainController::class);
 Route::post('/search', [MainController::class, 'search'])->name('search');
+Route::post('advancedSearch', [MainController::class, 'advancedSearch'])->name('advancedSearch');
+Route::get('/dashboard', function () {
+    return view('admin.layouts.master');
+});
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.layouts.master');
-    });
     Route::resource('imdb', AdminImdbController::class);
     Route::resource('user', AdminUserController::class);
     Route::resource('serial', AdminSerialController::class);

@@ -5,136 +5,71 @@
         <div class="row">
             <h3 class="search-title w-80">جستجوی پیشرفته</h3>
             <!-- 1 -->
-            <form action=""
+            <form action="{{ route('advancedSearch') }}" method="POST"
                 class="d-flex flex-wrap w-80 search-advance-content-box justify-content-center align-items-center bg-white border-radius-5rem">
-                <!-- 1 -->
+                @csrf
                 <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">ژانر اول</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 2 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">ژانر دوم</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <label class="form-control lbl-control d-inline-block">ژانر </label>
+                    <input type="button" id="select_all" name="select_all" value="انتخاب همه">
+                    <select class="form-select bg-secondary-custom sl-control d-inline-block" required name="genres[]"
+                        id="genres" multiple>
+                        @foreach ($genres as $g)
+                            <option value="{{ $g }}">
+                                {{ $g }} </option>
+                        @endforeach
                     </select>
                 </div>
                 <!-- 3 -->
                 <div class="col-sm-3 col-6 form-group my-1 p-2">
                     <label class="form-control lbl-control d-inline-block">کشور</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="country">
+                        {{-- <option value="all">همه</option> --}}
+                        <option value="ایران">ایران</option>
+                        <option value="آمریکا">آمریکا</option>
+                        <option value="بریتانیا">بریتانیا</option>
                     </select>
                 </div>
                 <!-- 4 -->
                 <div class="col-sm-3 col-6 form-group my-1 p-2">
                     <label class="form-control lbl-control d-inline-block">زبان</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 5 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">دسته</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="lang">
+                        {{-- <option value="all">همه</option> --}}
+                        <option value="انگلیسی">انگلیسی</option>
+                        <option value="فرانسوی">فرانسوی</option>
+                        <option value="کره ای">کره ای</option>
                     </select>
                 </div>
                 <!-- 6 -->
                 <div class="col-sm-3 col-6 form-group my-1 p-2">
                     <label class="form-control lbl-control d-inline-block">دوبله</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="dubbed">
+                        {{-- <option value="all">همه</option> --}}
+                        <option value="on">آری</option>
+                        <option value="{{ null }}">خیر</option>
                     </select>
                 </div>
                 <!-- 7 -->
                 <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">امتیاز از</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 8 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">ترتیب</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 5 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">لیست</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 6 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">جوایز</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
-                    </select>
-                </div>
-                <!-- 7 -->
-                <div class="col-sm-3 col-6 form-group my-1 p-2">
-                    <label class="form-control lbl-control d-inline-block">کیفیت</label>
-                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="" id="">
-                        <option value="0">همه</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <label class="form-control lbl-control d-inline-block">امتیاز IMDB</label>
+                    <select class="form-select bg-secondary-custom sl-control d-inline-block" name="star">
+                        <option value=">">بالای 5</option>
+                        <option value="<">زیر 5</option>
                     </select>
                 </div>
                 <!-- 8 -->
                 <div class="col-sm-3 col-12 form-group my-1 p-2">
                     <label class="form-control lbl-control d-inline-block">از سال</label>
 
-                    <select class="form-select bg-secondary-custom sl-control-year d-inline-block" name=""
-                        id="">
-                        <option value="0">1980</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <select class="form-select bg-secondary-custom sl-control-year d-inline-block" name="from_year">
+                        @for ($i = 1950; $i <= 2022; $i++)
+                            <option value="{{ $i }}">{{ $i }}</ option>
+                        @endfor
                     </select>
                     <span>تا</span>
-                    <select class="form-select bg-secondary-custom sl-control-year d-inline-block" name=""
-                        id="">
-                        <option value="0">2022</option>
-                        <option value="1">همه</option>
-                        <option value="2">همه</option>
-                        <option value="3">همه</option>
+                    <select class="form-select bg-secondary-custom sl-control-year d-inline-block" name="end_year">
+                        @for ($i = 1980; $i <= 2022; $i++)
+                            <option value="{{ $i }}">{{ $i }}</option>
+                        @endfor
                     </select>
                 </div>
                 <button class="btn btn-success btn-search text-center mt-4 border-radius-5rem">
@@ -2289,22 +2224,21 @@
 
                 <!-- 1 -->
                 @foreach ($news as $n)
+                    <div class="col-sm-6 col-12 d-flex px-sm-5">
+                        <div class="last-news-img-box">
+                            <a href="#" class="d-inline-block">
+                                <img src="/storage/uploads/images/news/{{ $n->pic }}" class="img-fluid p-2"
+                                    alt="news_pic" />
+                            </a>
+                        </div>
+                        <div class="last-news-content d-flex flex-column align-items-between p-3">
+                            <h2>{{ $n->title }}</h2>
+                            <p class="last-news-text">
+                                {{ $n->text }}
+                            </p>
+                        </div>
 
-                <div class="col-sm-6 col-12 d-flex px-sm-5">
-                    <div class="last-news-img-box">
-                        <a href="#" class="d-inline-block">
-                            <img src="/storage/uploads/images/news/{{ $n->pic }}" class="img-fluid p-2"
-                                alt="news_pic" />
-                        </a>
                     </div>
-                    <div class="last-news-content d-flex flex-column align-items-between p-3">
-                        <h2>{{ $n->title }}</h2>
-                        <p class="last-news-text">
-                            {{ $n->text }}
-                        </p>
-                    </div>
-
-                </div>
                 @endforeach
             </div>
 

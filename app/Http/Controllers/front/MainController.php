@@ -17,9 +17,21 @@ class MainController extends Controller
      */
     public function index()
     {
+
+
+
+
         $films = imdb::all();
         $news = News::all();
-        return view('FrontEnd.main.index', compact('films', 'news'));
+        $genres = "همه";
+        foreach ($films as $film) {
+            if ($film->genre) {
+                $genres = $genres . '،' . $film->genre;
+            }
+        }
+        $genres = array_unique(explode('،', $genres));
+        array_shift($genres);
+        return view('FrontEnd.main.index', compact('films', 'news', 'genres'));
     }
 
     /**
@@ -91,8 +103,35 @@ class MainController extends Controller
     public function search(Request $request)
     {
         // return $request->all();
-        $model1 = imdb::where('title', 'LIKE', "%$request->searchWord%")->get();
-        $model2 = Serial::where('title', 'LIKE', "%$request->searchWord%")->get();
-        return ['films' => $model1, 'serials' => $model2];
+        $films = imdb::where('title', 'LIKE', "%$request->searchWord%")->get();
+        $serials = Serial::where('title', 'LIKE', "%$request->searchWord%")->get();
+        if (count($films) == 0 && count($serials) == 0) {
+            \Illuminate\Support\Facades\Session::flash('search-done', "نتیجه ای مطابق با جستجوی شما یافت نشد!");
+        }
+        return view('FrontEnd.search.index', compact('films', 'serials'));
+        // return ['films' => $model1, 'serials' => $model2];
+    }
+
+    public function advancedSearch(Request $request)
+    {
+        // return $request->all();
+        // return $request->genres;
+        $genres = $request->genres;
+
+
+        $films = imdb::Where(function ($query) use ($genres) {
+            for ($i = 0; $i < count($genres); $i++) {
+                $query->orwhere('genre', 'like',  '%' . $genres[$i] . '%');
+            }
+        })->where('country', 'like', "%$request->country%")->where('lang', "like", "%$request->lang%")->where('dubbing', $request->dubbed)
+            ->where('imDbRating', "$request->star", 5)
+            ->whereBetween('production_year', [$request->from_year, $request->end_year])->get();
+
+        $serials = [];
+        // $serials = Serial::where('title', 'LIKE', "%$request->searchWord%")->get();
+        // if (count($films) == 0 && count($serials) == 0) {
+        //     \Illuminate\Support\Facades\Session::flash('search-done', "نتیجه ای مطابق با جستجوی شما یافت نشد!");
+        // }
+        return view('FrontEnd.search.index', compact('films', 'serials'));
     }
 }

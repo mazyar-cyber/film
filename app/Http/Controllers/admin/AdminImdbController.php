@@ -184,7 +184,9 @@ class AdminImdbController extends Controller
         $model->photo = $result['image'];
         $model->slidePhoto = $result['image'];
         $model->briefStory = $result['plot'];
-        $model->trailer_video_link = $result['trailer']['linkEmbed'];
+        if (count($result['trailer']) > 0) {
+            $model->trailer_video_link = $result['trailer']['linkEmbed'];
+        }
         $model->description = $result['wikipedia']['plotFull']['plainText'];
         $model->genre = $result['genres'];
         $model->author = $result['writers'];

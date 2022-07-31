@@ -38,7 +38,7 @@
                     <div class="navbar justify-content-between w-100 navbar-sm">
                         <ul class="navbar-nav mr-auto nav-menu nav-menu-sm">
                             <li class="nav-item">
-                                <a class="nav-link nav-link-sm" href="#">صفحه ی اصلی</a>
+                                <a class="nav-link nav-link-sm" href="/">صفحه ی اصلی</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link nav-link-sm" href="#">هنرمندان</a>
@@ -57,7 +57,8 @@
                             @csrf
                             <div
                                 class="form-control d-flex justify-content-center bg-transparent frm-sm align-items-center">
-                                <input name="searchWord" type="text" class="search-input bg-transparent" placeholder="جستجو ..." />
+                                <input name="searchWord" type="text" class="search-input bg-transparent"
+                                    placeholder="جستجو ..." />
                                 <button class="btn" href="#"><i class="fa fa-search"></i></button>
                             </div>
                         </form>
@@ -112,8 +113,8 @@
                                     alt="" />
                             </div>
                             <div class="col-2 m-2 slider-img-box">
-                                <img src="frontAssest/images/movies-poster/THE-BATMAN-2022-2 (1).jpg" class="img-fluid"
-                                    alt="" />
+                                <img src="frontAssest/images/movies-poster/THE-BATMAN-2022-2 (1).jpg"
+                                    class="img-fluid" alt="" />
                             </div>
                             <div class="col-2 m-2 slider-img-box">
                                 <img src="frontAssest/images/movies-poster/Morbius.jpg" class="img-fluid"
@@ -251,7 +252,9 @@
 
             });
 
-
+            $('#select_all').click(function() {
+                $('#genres option').prop('selected', true);
+            });
 
         });
     </script>

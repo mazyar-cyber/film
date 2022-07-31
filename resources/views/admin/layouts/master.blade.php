@@ -55,7 +55,7 @@
             <div class="main-sidebar-body">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin"><span class="shape1"></span><span class="shape2"></span><i
+                        <a class="nav-link" href="/dashboard"><span class="shape1"></span><span class="shape2"></span><i
                                 class="ti-home fa-spin fa-2x sidemenu-icon"></i><span
                                 class="sidemenu-label">داشبورد</span></a>
                     </li>
